@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Recommender</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="overlay">
+
+        <nav>
+            <h1>NETFLIX</h1>
+        </nav>
+
+        <section class="hero">
+
+            <h2>Discover Your Next Favorite Movie</h2>
+
+            <p>
+                AI-powered movie recommendations using Machine Learning
+            </p>
+
+            <form method="POST">
+                <input
+                    type="text"
+                    name="movie"
+                    placeholder="Search for a movie..."
+                    required
+                >
+
+                <button type="submit">
+                    Recommend
+                </button>
+            </form>
+
+        </section>
+
+        <section class="results">
+
+            <h3>Popular Recommendations</h3>
+
+            <div class="movie-grid">
+                {% for movie in recommendations %}
+                <div class="movie-card">
+                    <h4>{{ movie }}</h4>
+                </div>
+                {% endfor %}
+            </div>
+
+        </section>
+
+    </div>
+
+</body>
+</html>

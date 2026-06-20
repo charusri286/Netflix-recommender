@@ -1,7 +1,7 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from preprocessing import preprocess_data
+from src.preprocessing import preprocess_data
 
 movies = preprocess_data()
 
