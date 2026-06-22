@@ -39,21 +39,38 @@
 
         </section>
 
+        {% if searched_movie %}
+
         <section class="results">
 
-            <h3>Popular Recommendations</h3>
+            <h3>
+                Recommendations for "{{ searched_movie }}"
+            </h3>
 
             <div class="movie-grid">
                 {% for movie in recommendations %}
                 <div class="movie-card">
-                    <h4>{{ movie }}</h4>
+
+                    <h4>{{ movie.title }}</h4>
+
+                    {% if movie.rating != "" %}
+                    <p class="rating">
+                        ⭐ {{ movie.rating }}
+                    </p>
+                    {% endif %}
+
                 </div>
                 {% endfor %}
             </div>
 
         </section>
 
+        {% endif %}
     </div>
-
+    <footer>
+    <p>
+        Built with Flask • Machine Learning • MovieLens Dataset
+    </p>
+    </footer>
 </body>
 </html>

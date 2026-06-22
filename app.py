@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from src.content_based import recommend
+from recommender import recommend_movies
 
 app = Flask(__name__)
 
@@ -7,14 +7,19 @@ app = Flask(__name__)
 def home():
 
     recommendations = []
-
+    searched_movie = None
     if request.method == "POST":
-        movie = request.form["movie"]
-        recommendations = recommend(movie)
+
+        searched_movie = request.form["movie"]
+
+        recommendations = recommend_movies(
+            searched_movie
+        )
 
     return render_template(
         "index.html",
-        recommendations=recommendations
+        recommendations=recommendations,
+        searched_movie=searched_movie
     )
 
 if __name__ == "__main__":
