@@ -60,10 +60,21 @@ movies["features"] = (
 )
 
 # =========================
+# MEMORY OPTIMIZATION
+# =========================
+
+movies = movies.sort_values(
+    by="avg_rating",
+    ascending=False
+).head(3000).reset_index(drop=True)
+
+# =========================
 # VECTORIZATION
 # =========================
 
-cv = TfidfVectorizer(stop_words="english")
+cv = TfidfVectorizer(
+    stop_words="english"
+)
 
 feature_matrix = cv.fit_transform(
     movies["features"]
